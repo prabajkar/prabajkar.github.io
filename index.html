@@ -3,425 +3,519 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pramod Bharadwaj Chandrashekar</title>
+<title>Pramod Bharadwaj Chandrashekar — Personal Site</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink-bg: #142019;
-    --ink-bg-alt: #1b2a21;
-    --card: #f1e8d2;
-    --card-shadow: #0a120d;
-    --cream-text: #ece3cd;
-    --cream-text-dim: #b9ae95;
-    --brass: #b5904f;
-    --brass-bright: #d4ac66;
-    --stamp-red: #8a3a2c;
-    --rule: rgba(181,144,79,0.35);
-    --font-display: 'Source Serif 4', serif;
-    --font-body: 'IBM Plex Sans', sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
+    --bg-1: #fff6e6;
+    --bg-2: #eaf4fb;
+    --ink: #2b2140;
+    --ink-soft: #5c5270;
+    --card: #ffffff;
+    --gold: #d9a441;
+    --gold-dark: #b5822f;
+    --maroon: #a13a4d;
+    --blue: #2e6e8e;
+    --green: #3f7d5c;
+    --ember: #e07a3e;
+    --font-display: 'Baloo 2', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
   }
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--ink-bg);
-    background-image:
-      radial-gradient(circle at 20% 10%, var(--ink-bg-alt) 0%, transparent 45%),
-      radial-gradient(circle at 90% 80%, var(--ink-bg-alt) 0%, transparent 40%);
-    color:var(--cream-text);
+    min-height:100vh;
+    color:var(--ink);
     font-family:var(--font-body);
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(circle at 8% 12%, #ffffffaa 0%, transparent 2%),
+      radial-gradient(circle at 22% 28%, #ffffffaa 0%, transparent 1.6%),
+      radial-gradient(circle at 76% 8%, #ffffff99 0%, transparent 1.8%),
+      radial-gradient(circle at 88% 34%, #ffffffaa 0%, transparent 1.4%),
+      radial-gradient(circle at 60% 4%, #ffffff88 0%, transparent 1.2%),
+      radial-gradient(circle at 35% 6%, #ffffff88 0%, transparent 1.2%),
+      linear-gradient(160deg, var(--bg-2) 0%, var(--bg-1) 55%, #fdece0 100%);
+    background-attachment:fixed;
   }
 
-  a{color:var(--brass-bright);}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--brass-bright); outline-offset:3px;}
+  a{color:var(--blue);}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--gold); outline-offset:2px;}
 
-  /* ===== Header / Title Card ===== */
   header.title-block{
-    max-width:900px;
+    max-width:920px;
     margin:0 auto;
-    padding:64px 24px 32px;
+    padding:56px 24px 26px;
     text-align:left;
-    border-bottom:1px solid var(--rule);
   }
   .eyebrow{
+    display:inline-block;
     font-family:var(--font-mono);
-    font-size:0.78rem;
-    letter-spacing:0.14em;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
     text-transform:uppercase;
-    color:var(--brass);
-    margin-bottom:14px;
+    color:var(--card);
+    background:var(--ember);
+    padding:4px 10px;
+    border-radius:20px;
+    margin-bottom:16px;
   }
   h1.name{
     font-family:var(--font-display);
-    font-size:clamp(2.2rem, 5vw, 3.4rem);
-    font-weight:700;
-    margin:0 0 6px;
-    color:var(--cream-text);
+    font-size:clamp(2.3rem, 5.5vw, 3.6rem);
+    font-weight:800;
+    margin:0 0 8px;
+    color:var(--ink);
     letter-spacing:-0.01em;
   }
   p.role-line{
-    font-size:1.05rem;
-    color:var(--cream-text-dim);
+    font-size:1.08rem;
+    color:var(--ink-soft);
     margin:0 0 4px;
+    font-weight:600;
   }
-  p.role-line .sep{ color:var(--brass); margin:0 8px; }
+  p.role-line .sep{ color:var(--gold-dark); margin:0 8px; }
 
-  /* ===== Nav — library drawer tabs ===== */
   nav.tabs{
-    max-width:900px;
+    max-width:920px;
     margin:0 auto;
-    padding:0 24px;
+    padding:14px 24px 0;
     display:flex;
-    gap:6px;
+    gap:10px;
     flex-wrap:wrap;
     position:sticky;
-    top:0;
-    background:var(--ink-bg);
+    top:12px;
     z-index:10;
-    padding-top:18px;
-    padding-bottom:0;
   }
   nav.tabs button{
-    font-family:var(--font-mono);
-    font-size:0.8rem;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    background:var(--ink-bg-alt);
-    color:var(--cream-text-dim);
-    border:1px solid var(--rule);
-    border-bottom:none;
-    padding:10px 18px 12px;
-    border-radius:6px 6px 0 0;
+    font-family:var(--font-display);
+    font-size:0.92rem;
+    font-weight:600;
+    background:var(--card);
+    color:var(--ink-soft);
+    border:2px solid #e7dcc4;
+    padding:9px 18px;
+    border-radius:999px;
     cursor:pointer;
-    position:relative;
-    top:1px;
-    transition:color .15s ease, background .15s ease;
+    transition:transform .15s ease, color .15s ease, background .15s ease, border-color .15s ease;
+    box-shadow:0 2px 0 #e7dcc4;
   }
-  nav.tabs button:hover{ color:var(--cream-text); }
+  nav.tabs button .ic{ margin-right:6px; }
+  nav.tabs button:hover{ transform:translateY(-2px); }
   nav.tabs button.active{
-    background:var(--card);
-    color:#1b140a;
-    font-weight:500;
-    border-color:var(--card);
-  }
-  nav.tabs-underline{
-    height:1px;
-    background:var(--card);
-    max-width:900px;
-    margin:0 auto;
+    background:var(--ember);
+    color:#fff;
+    border-color:var(--ember);
+    box-shadow:0 2px 0 #b85a26;
   }
 
-  /* ===== Main panel (card surface) ===== */
   main{
-    max-width:900px;
-    margin:0 auto 80px;
+    max-width:920px;
+    margin:22px auto 80px;
     background:var(--card);
-    color:#2a2114;
-    border-radius:0 8px 8px 8px;
-    padding:44px 40px 56px;
-    box-shadow: 0 24px 60px -20px var(--card-shadow);
+    color:var(--ink);
+    border-radius:22px;
+    padding:40px 40px 56px;
+    box-shadow: 0 20px 50px -22px #4b3a1f55, 0 0 0 2px #fff, 0 0 0 4px #f0e2c1;
   }
   section.panel{ display:none; animation:fade .35s ease; }
   section.panel.active{ display:block; }
-  @keyframes fade{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+  @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
 
   h2.panel-title{
     font-family:var(--font-display);
-    font-size:1.7rem;
+    font-size:1.8rem;
+    font-weight:700;
     margin:0 0 6px;
-    color:#241b0e;
+    color:var(--ink);
   }
   p.panel-sub{
     font-family:var(--font-mono);
-    font-size:0.78rem;
-    color:#7a6a45;
+    font-size:0.76rem;
+    color:var(--gold-dark);
     text-transform:uppercase;
-    letter-spacing:0.1em;
-    margin:0 0 28px;
+    letter-spacing:0.09em;
+    margin:0 0 26px;
   }
 
-  /* ===== Home ===== */
   .bio{
     display:grid;
-    grid-template-columns:150px 1fr;
+    grid-template-columns:170px 1fr;
     gap:32px;
     align-items:start;
   }
+  .portrait-wrap{
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
   .portrait{
     width:150px; height:150px;
-    border-radius:4px;
-    background:linear-gradient(135deg,#c9b48a,#8a734b);
+    border-radius:20px;
+    background:linear-gradient(150deg, var(--ember), var(--gold));
     display:flex; align-items:center; justify-content:center;
     font-family:var(--font-display);
-    font-size:2.4rem; color:#2a2114; font-weight:700;
-    border:1px solid #00000022;
+    font-size:2.6rem; color:#fff; font-weight:800;
+    border:4px solid #fff;
+    box-shadow:0 0 0 3px #f0e2c1;
+  }
+  .level-chip{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    background:var(--ink);
+    color:#fff;
+    padding:3px 10px;
+    border-radius:999px;
+    letter-spacing:0.04em;
   }
   .bio p{ margin:0 0 14px; font-size:1rem; max-width:56ch; }
-  .interests{
-    margin-top:18px;
-    display:flex; flex-wrap:wrap; gap:8px;
+
+  .stat-block{ margin-top:20px; }
+  .stat-block h4{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+    margin:0 0 10px;
   }
+  .stat{
+    display:grid;
+    grid-template-columns:110px 1fr 34px;
+    align-items:center;
+    gap:10px;
+    margin-bottom:8px;
+    font-size:0.85rem;
+  }
+  .stat .bar{
+    height:9px;
+    border-radius:6px;
+    background:#f0e6cd;
+    overflow:hidden;
+  }
+  .stat .bar span{
+    display:block; height:100%;
+    border-radius:6px;
+    background:linear-gradient(90deg, var(--gold), var(--ember));
+  }
+  .stat .val{ font-family:var(--font-mono); font-size:0.76rem; color:var(--ink-soft); }
+
+  .interests{ margin-top:22px; display:flex; flex-wrap:wrap; gap:8px; }
   .interests span{
     font-family:var(--font-mono);
     font-size:0.72rem;
-    border:1px solid #8a6a3a55;
-    padding:5px 10px;
-    border-radius:3px;
-    color:#5c4a26;
-    background:#e8dcb8;
+    padding:5px 12px;
+    border-radius:999px;
+    color:#fff;
+    font-weight:500;
   }
+  .interests span:nth-child(1){ background:var(--maroon); }
+  .interests span:nth-child(2){ background:var(--blue); }
+  .interests span:nth-child(3){ background:var(--green); }
+  .interests span:nth-child(4){ background:var(--ember); }
+  .interests span:nth-child(5){ background:var(--gold-dark); }
+
   @media (max-width:560px){
     .bio{ grid-template-columns:1fr; }
-    .portrait{ width:96px; height:96px; font-size:1.6rem; }
+    .portrait-wrap{ flex-direction:row; }
+    .portrait{ width:96px; height:96px; font-size:1.7rem; border-radius:16px; }
   }
 
-  /* ===== Catalog cards (Featured / Publications / Talks) ===== */
-  .catalog{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-  }
+  .catalog{ display:flex; flex-direction:column; gap:16px; }
   .entry{
     position:relative;
-    border:1px solid #8a6a3a55;
-    border-left:3px solid var(--brass);
-    background:#e9ddb9;
-    padding:18px 20px 18px 22px;
-    border-radius:2px;
+    border:2px solid #f0e2c1;
+    background:#fffaf0;
+    padding:18px 20px;
+    border-radius:16px;
+    transition:transform .15s ease, box-shadow .15s ease;
   }
-  .entry .num{
+  .entry:hover{ transform:translateY(-2px); box-shadow:0 10px 20px -12px #4b3a1f55; }
+  .entry .type-chip{
     position:absolute;
-    top:14px; right:16px;
+    top:16px; right:16px;
     font-family:var(--font-mono);
-    font-size:0.7rem;
-    color:var(--stamp-red);
-    border:1px solid var(--stamp-red);
-    padding:2px 7px;
-    border-radius:2px;
-    transform:rotate(2deg);
-    opacity:0.85;
+    font-size:0.66rem;
+    font-weight:700;
+    color:#fff;
+    padding:3px 10px;
+    border-radius:999px;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
   }
+  .type-modeling{ background:var(--blue); }
+  .type-field{ background:var(--green); }
+  .type-data{ background:var(--gold-dark); }
+  .type-policy{ background:var(--maroon); }
+  .type-talk{ background:var(--ember); }
+
   .entry h3{
     font-family:var(--font-display);
     font-size:1.12rem;
+    font-weight:700;
     margin:0 8px 6px 0;
-    padding-right:70px;
-    color:#241b0e;
+    padding-right:90px;
+    color:var(--ink);
   }
   .entry .meta{
     font-family:var(--font-mono);
     font-size:0.76rem;
-    color:#6b5a35;
+    color:var(--ink-soft);
     margin-bottom:8px;
-    letter-spacing:0.02em;
   }
-  .entry p{ margin:0; font-size:0.94rem; color:#3a2e18; }
-  .entry .tag{
-    display:inline-block;
-    margin-top:10px;
-    font-family:var(--font-mono);
-    font-size:0.7rem;
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    color:#7a6a45;
-  }
+  .entry p{ margin:0; font-size:0.94rem; color:#3a3050; }
 
-  /* ===== Contact ===== */
   .contact-card{
-    border:1px dashed #8a6a3a88;
+    border:2px dashed var(--gold);
     padding:26px;
-    border-radius:4px;
-    background:#e9ddb9;
+    border-radius:18px;
+    background:#fffaf0;
     max-width:480px;
     position:relative;
   }
   .contact-card::after{
-    content:"REACH ME";
+    content:"⚡ SAY HELLO";
     position:absolute;
-    top:-11px; left:20px;
+    top:-14px; left:20px;
     background:var(--card);
-    padding:0 8px;
-    font-family:var(--font-mono);
-    font-size:0.68rem;
-    letter-spacing:0.1em;
-    color:var(--stamp-red);
+    padding:2px 10px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:0.78rem;
+    color:var(--ember);
+    border-radius:999px;
+    border:2px solid var(--gold);
   }
   .contact-list{ list-style:none; margin:0; padding:0; }
   .contact-list li{
     display:flex;
     justify-content:space-between;
     padding:10px 0;
-    border-bottom:1px solid #8a6a3a33;
+    border-bottom:1px solid #f0e2c1;
     font-size:0.95rem;
   }
   .contact-list li:last-child{ border-bottom:none; }
   .contact-list .label{
     font-family:var(--font-mono);
     font-size:0.75rem;
-    color:#7a6a45;
+    color:var(--ink-soft);
     text-transform:uppercase;
-    letter-spacing:0.06em;
+    letter-spacing:0.05em;
   }
-  .contact-list a{ color:#5c3d24; font-weight:500; }
+  .contact-list a{ color:var(--maroon); font-weight:700; }
 
   footer{
-    max-width:900px;
+    max-width:920px;
     margin:0 auto 40px;
     padding:0 24px;
     font-family:var(--font-mono);
     font-size:0.72rem;
-    color:var(--cream-text-dim);
+    color:var(--ink-soft);
   }
 
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     section.panel{ animation:none; }
+    .entry:hover{ transform:none; }
   }
 </style>
 </head>
 <body>
 
 <header class="title-block">
-  <div class="eyebrow">Personal Site — Est. 2026</div>
-  <h1 class="name">Jordan Ellis, PhD</h1>
-  <p class="role-line">Computational Ecology <span class="sep">·</span> Postdoctoral Researcher <span class="sep">·</span> Cascade Institute</p>
+  <div class="eyebrow">✦ Personal Site · 2026</div>
+  <h1 class="name">Pramod Bharadwaj Chandrashekar</h1>
+  <p class="role-line">Research Scientist <span class="sep">·</span> Dept. of Biostatistics &amp; Medical Informatics <span class="sep">·</span> University of Wisconsin–Madison</p>
 </header>
 
 <nav class="tabs" role="tablist" aria-label="Site sections">
-  <button class="tab-btn active" data-target="home" role="tab" aria-selected="true">Home</button>
-  <button class="tab-btn" data-target="featured" role="tab" aria-selected="false">Featured</button>
-  <button class="tab-btn" data-target="publications" role="tab" aria-selected="false">Publications</button>
-  <button class="tab-btn" data-target="talks" role="tab" aria-selected="false">Talks</button>
-  <button class="tab-btn" data-target="contact" role="tab" aria-selected="false">Contact</button>
+  <button class="tab-btn active" data-target="home" role="tab" aria-selected="true"><span class="ic">🏠</span>Home</button>
+  <button class="tab-btn" data-target="featured" role="tab" aria-selected="false"><span class="ic">⭐</span>Featured</button>
+  <button class="tab-btn" data-target="publications" role="tab" aria-selected="false"><span class="ic">📚</span>Publications</button>
+  <button class="tab-btn" data-target="talks" role="tab" aria-selected="false"><span class="ic">🎤</span>Talks</button>
+  <button class="tab-btn" data-target="contact" role="tab" aria-selected="false"><span class="ic">✉️</span>Contact</button>
 </nav>
-<div class="tabs-underline"></div>
 
 <main>
 
-  <!-- HOME -->
   <section class="panel active" id="home">
     <h2 class="panel-title">About</h2>
-    <p class="panel-sub">Card 01 / Introduction</p>
+    <p class="panel-sub">Character Select · Introduction</p>
     <div class="bio">
-      <div class="portrait">JE</div>
+      <div class="portrait-wrap">
+        <div class="portrait">PC</div>
+        <span class="level-chip">LV. Research Scientist</span>
+      </div>
       <div>
-        <p>I'm a researcher working at the intersection of ecological modeling and machine learning, currently based at the Cascade Institute. My work focuses on predicting how species distributions shift under environmental change, using tools from spatial statistics and deep learning.</p>
-        <p>Before this, I completed my PhD at the University of the Pacific Northwest, where I studied population dynamics in freshwater ecosystems. I'm generally interested in building models that are useful to conservation practitioners, not just accurate on a benchmark.</p>
+        <p>I am a Research Scientist at the University of Wisconsin–Madison, working with <a href="https://www.waisman.wisc.edu/staff/wang-daifeng/" target="_blank" rel="noopener">Prof. Daifeng Wang</a>. I develop deep learning methods and computational tools for multi-modal integration, focusing on personalized functional genomics and the molecular mechanisms underlying various diseases.</p>
+        <p>I hold a PhD in Biomedical Informatics from Arizona State University, where I worked on fine-mapping functional noncoding genetic elements using machine learning, and an MS in Computer Science, also from ASU.</p>
+
+        <div class="stat-block">
+          <h4>Stat Block</h4>
+          <div class="stat"><span>Curiosity</span><div class="bar"><span style="width:92%"></span></div><span class="val">92</span></div>
+          <div class="stat"><span>Rigor</span><div class="bar"><span style="width:88%"></span></div><span class="val">88</span></div>
+          <div class="stat"><span>Collaboration</span><div class="bar"><span style="width:85%"></span></div><span class="val">85</span></div>
+          <div class="stat"><span>Coffee</span><div class="bar"><span style="width:100%"></span></div><span class="val">100</span></div>
+        </div>
+
         <div class="interests">
-          <span>Species distribution modeling</span>
-          <span>Bayesian statistics</span>
-          <span>Remote sensing</span>
-          <span>Conservation policy</span>
-          <span>Open science</span>
+          <span>Functional genomics</span>
+          <span>Multi-modal deep learning</span>
+          <span>Gene regulatory networks</span>
+          <span>Alzheimer's disease</span>
+          <span>Personalized medicine</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURED -->
   <section class="panel" id="featured">
     <h2 class="panel-title">Featured Work</h2>
-    <p class="panel-sub">Card 02 / Selected Highlights</p>
+    <p class="panel-sub">Trophy Case · Selected Highlights</p>
     <div class="catalog">
       <div class="entry">
-        <span class="num">FT-01</span>
-        <h3>A deep learning framework for range-shift forecasting</h3>
-        <div class="meta">2026 · Nature Ecology &amp; Evolution (in press)</div>
-        <p>Introduces a spatiotemporal model that outperforms classical SDMs on 40 North American bird species, with an open-source implementation used by three conservation NGOs.</p>
-        <span class="tag">Journal Article</span>
+        <span class="type-chip type-modeling">Genomics</span>
+        <h3>Personalized Single-cell Transcriptomics Reveals Molecular Diversity in Alzheimer's Disease</h3>
+        <div class="meta">Chandrashekar, P.B. et al. · Nature Communications (In Press)</div>
+        <p>Preprint available on <a href="https://www.medrxiv.org/content/10.1101/2024.11.01.24316589v1" target="_blank" rel="noopener">medRxiv</a>.</p>
       </div>
       <div class="entry">
-        <span class="num">FT-02</span>
-        <h3>Open Range — a public dataset for distribution modeling</h3>
-        <div class="meta">2025 · Dataset &amp; Toolkit</div>
-        <p>Co-led the release of a curated, versioned dataset combining citizen-science observations with satellite covariates, now used in over a dozen published studies.</p>
-        <span class="tag">Dataset</span>
+        <span class="type-chip type-data">Multi-modal AI</span>
+        <h3>DeepGAMI: deep biologically guided auxiliary learning for multimodal integration and imputation to improve genotype–phenotype prediction</h3>
+        <div class="meta">Chandrashekar, P.B. et al. · Genome Medicine 15, 88 (2023)</div>
+        <p><a href="https://link.springer.com/article/10.1186/s13073-023-01248-6" target="_blank" rel="noopener">DOI: 10.1186/s13073-023-01248-6</a></p>
       </div>
       <div class="entry">
-        <span class="num">FT-03</span>
-        <h3>Press coverage: "The models tracking a warming wild"</h3>
-        <div class="meta">2025 · Science Weekly Feature</div>
-        <p>Profile piece on the lab's forecasting work and its adoption by regional wildlife agencies.</p>
-        <span class="tag">Media</span>
+        <span class="type-chip type-talk">Poster</span>
+        <h3>Personalized Single-cell Transcriptomics Reveals Functional Genomic Diversity in Alzheimer's Disease</h3>
+        <div class="meta">American Society of Human Genetics (ASHG) · 2025</div>
+        <p>Poster presentation of ongoing single-cell work in Alzheimer's disease.</p>
       </div>
     </div>
   </section>
 
-  <!-- PUBLICATIONS -->
   <section class="panel" id="publications">
     <h2 class="panel-title">Publications</h2>
-    <p class="panel-sub">Card 03 / Chronological Index</p>
+    <p class="panel-sub">Quest Log · Chronological Index</p>
     <div class="catalog">
       <div class="entry">
-        <span class="num">PB-07</span>
-        <h3>A deep learning framework for range-shift forecasting</h3>
-        <div class="meta">Ellis, J., Marsh, T., Okafor, N. · Nature Ecology &amp; Evolution, 2026</div>
-        <p>Presents a convolutional-recurrent architecture for forecasting species range shifts under climate scenarios.</p>
+        <span class="type-chip type-modeling">Genomics</span>
+        <h3>Personalized Single-cell Transcriptomics Reveals Molecular Diversity in Alzheimer's Disease</h3>
+        <div class="meta">Chandrashekar, P.B.*, Alatkar, S.A.*, Kalafut, N.C.*, Jin, T.*, et al. · Nature Communications (In Press)</div>
+        <p><a href="https://www.medrxiv.org/content/10.1101/2024.11.01.24316589v1" target="_blank" rel="noopener">medRxiv: 2024.11.01.24316589</a></p>
       </div>
       <div class="entry">
-        <span class="num">PB-06</span>
-        <h3>Uncertainty quantification in citizen-science occurrence data</h3>
-        <div class="meta">Ellis, J., Rowe, K. · Methods in Ecology and Evolution, 2025</div>
-        <p>Proposes a hierarchical Bayesian approach for correcting observer bias in crowdsourced biodiversity records.</p>
+        <span class="type-chip type-modeling">Genomics</span>
+        <h3>DeepCORE: An interpretable multi-view deep neural network model to detect co-operative regulatory elements</h3>
+        <div class="meta">Chandrashekar, P.B., Chen, H., Lee, M., Ahmadinejad, N., Liu, L. · Computational and Structural Biotechnology Journal 23 (2024): 679–687</div>
+        <p><a href="https://doi.org/10.1016/j.csbj.2023.12.044" target="_blank" rel="noopener">DOI: 10.1016/j.csbj.2023.12.044</a></p>
       </div>
       <div class="entry">
-        <span class="num">PB-05</span>
-        <h3>Freshwater population cycles under variable flow regimes</h3>
-        <div class="meta">Ellis, J. · Journal of Applied Ecology, 2024</div>
-        <p>PhD dissertation chapter examining how altered hydrology reshapes population dynamics in stream-dwelling fish.</p>
+        <span class="type-chip type-data">Multi-modal AI</span>
+        <h3>DeepGAMI: deep biologically guided auxiliary learning for multimodal integration and imputation to improve genotype–phenotype prediction</h3>
+        <div class="meta">Chandrashekar, P.B., Alatkar, S., Wang, J., Hoffman, G.E., et al. · Genome Medicine 15, 88 (2023)</div>
+        <p><a href="https://link.springer.com/article/10.1186/s13073-023-01248-6" target="_blank" rel="noopener">DOI: 10.1186/s13073-023-01248-6</a></p>
       </div>
       <div class="entry">
-        <span class="num">PB-04</span>
-        <h3>Comparing SDM architectures across taxonomic groups</h3>
-        <div class="meta">Ellis, J., Marsh, T. · Ecography, 2023</div>
-        <p>Benchmark study comparing five modeling approaches across 200 species from four taxonomic classes.</p>
+        <span class="type-chip type-field">Review</span>
+        <h3>Bringing machine learning to research on intellectual and developmental disabilities: taking inspiration from neurological diseases</h3>
+        <div class="meta">Gupta, C., Chandrashekar, P., Jin, T., He, C., Khullar, S., Chang, Q., Wang, D. · Journal of Neurodevelopmental Disorders 14, 1 (2022)</div>
+        <p><a href="https://link.springer.com/article/10.1186/s11689-022-09438-w" target="_blank" rel="noopener">DOI: 10.1186/s11689-022-09438-w</a></p>
+      </div>
+      <div class="entry">
+        <span class="type-chip type-modeling">Genomics</span>
+        <h3>Accurate identification of subclones in tumor genomes</h3>
+        <div class="meta">Ahmadinejad, N., Troftgruben, S., Wang, J., Chandrashekar, P.B., Dinu, V., Maley, C., Liu, L. · Molecular Biology and Evolution 39, 7 (2022): msac136</div>
+        <p><a href="https://doi.org/10.1093/molbev/msac136" target="_blank" rel="noopener">DOI: 10.1093/molbev/msac136</a></p>
+      </div>
+      <div class="entry">
+        <span class="type-chip type-data">Methods</span>
+        <h3>TreeMap: a structured approach to fine mapping of eQTL variants</h3>
+        <div class="meta">Liu, L., Chandrashekar, P., Zeng, B., Sanderford, M.D., Kumar, S., Gibson, G. · Bioinformatics 37, 8 (2021): 1125–1134</div>
+        <p><a href="https://doi.org/10.1093/bioinformatics/btaa927" target="_blank" rel="noopener">DOI: 10.1093/bioinformatics/btaa927</a></p>
+      </div>
+      <div class="entry">
+        <span class="type-chip type-modeling">Genomics</span>
+        <h3>Somatic selection distinguishes oncogenes and tumor suppressor genes</h3>
+        <div class="meta">Chandrashekar, P., Ahmadinejad, N., Wang, J., Sekulic, A., Egan, J.B., Asmann, Y.W., Kumar, S., Maley, C., Liu, L. · Bioinformatics 36, 6 (2020): 1712–1717</div>
+        <p><a href="https://doi.org/10.1093/bioinformatics/btz851" target="_blank" rel="noopener">DOI: 10.1093/bioinformatics/btz851</a></p>
+      </div>
+      <div class="entry">
+        <span class="type-chip type-field">Informatics</span>
+        <h3>Automated comparison of pathology reports for on-the-job assessment of residents</h3>
+        <div class="meta">Chandrashekar, P.B., Montone, K., Feldman, M.D., Gonzalez-Hernandez, G. · AMIA Summits on Translational Science Proceedings 2019: 495</div>
+        <p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6568070/" target="_blank" rel="noopener">PubMed: 31259004</a></p>
+      </div>
+      <div class="entry">
+        <span class="type-chip type-modeling">Genomics</span>
+        <h3>Biological relevance of computationally predicted pathogenicity of noncoding variants</h3>
+        <div class="meta">Liu, L., Sanderford, M.D., Patel, R., Chandrashekar, P., Gibson, G., Kumar, S. · Nature Communications 10, 330 (2019)</div>
+        <p><a href="https://www.nature.com/articles/s41467-018-08270-y" target="_blank" rel="noopener">DOI: s41467-018-08270-y</a></p>
+      </div>
+      <div class="entry">
+        <span class="type-chip type-field">Informatics</span>
+        <h3>Discovering cohorts of pregnant women from social media for safety surveillance and analysis</h3>
+        <div class="meta">Sarker, A., Chandrashekar, P., Magge, A., Cai, H., Klein, A., Gonzalez, G. · Journal of Medical Internet Research 19, 10 (2017): e361</div>
+        <p><a href="https://www.jmir.org/2017/10/e361/" target="_blank" rel="noopener">DOI: 10.2196/jmir.8164</a></p>
       </div>
     </div>
   </section>
 
-  <!-- TALKS -->
   <section class="panel" id="talks">
     <h2 class="panel-title">Talks &amp; Presentations</h2>
-    <p class="panel-sub">Card 04 / Speaking Record</p>
+    <p class="panel-sub">Tour Log · Speaking Record</p>
     <div class="catalog">
       <div class="entry">
-        <span class="num">TK-11</span>
-        <h3>Forecasting biodiversity loss with deep spatiotemporal models</h3>
-        <div class="meta">Keynote · International Congress for Conservation Biology, Vancouver · 2026</div>
-        <p>Invited keynote on bridging machine learning and applied conservation decision-making.</p>
+        <span class="type-chip type-talk">Oral</span>
+        <h3>Biologically inspired deep learning for interpreting cell-type functional genomics in brain diseases</h3>
+        <div class="meta">International Conference on Intelligent Biology and Medicine (ICIBM) · 2024</div>
       </div>
       <div class="entry">
-        <span class="num">TK-09</span>
-        <h3>Open Range: building public infrastructure for ecology</h3>
-        <div class="meta">Invited Talk · Cascade Institute Seminar Series · 2025</div>
-        <p>Overview of the dataset's design and its adoption across the research community.</p>
+        <span class="type-chip type-talk">Oral</span>
+        <h3>An interpretable multi-view deep neural network model to detect co-operative regulatory elements</h3>
+        <div class="meta">International Conference on Intelligent Biology and Medicine (ICIBM) · 2023</div>
       </div>
       <div class="entry">
-        <span class="num">TK-06</span>
-        <h3>Uncertainty in the wild: modeling noisy ecological data</h3>
-        <div class="meta">Contributed Talk · Ecological Society of America Annual Meeting · 2024</div>
-        <p>Presented dissertation work on Bayesian bias-correction methods for occurrence data.</p>
+        <span class="type-chip type-talk">Oral</span>
+        <h3>DeepGAMI: Deep biologically guided auxiliary learning for multi-modal integration and imputation to improve phenotype prediction</h3>
+        <div class="meta">Regulatory and Systems Genomics with DREAM Challenges (RSGDREAM) · 2023</div>
+      </div>
+      <div class="entry">
+        <span class="type-chip type-talk">Oral</span>
+        <h3>Deep learning-based multi-view model for deciphering gene regulatory keywords</h3>
+        <div class="meta">Rocky Bioinformatics Conference · 2019</div>
+      </div>
+      <div class="entry">
+        <span class="type-chip type-talk">Oral</span>
+        <h3>Automated Comparison of Pathology Reports for On-the-job Assessment of Residents</h3>
+        <div class="meta">AMIA Summits on Translational Science Proceedings · 2019</div>
+      </div>
+      <div class="entry">
+        <span class="type-chip type-policy">Poster</span>
+        <h3>Personalized Single-cell Transcriptomics Reveals Functional Genomic Diversity in Alzheimer's Disease</h3>
+        <div class="meta">American Society of Human Genetics (ASHG) · 2025</div>
+      </div>
+      <div class="entry">
+        <span class="type-chip type-policy">Poster</span>
+        <h3>Deep auxiliary learning for multi-modal integration and imputation to improve genotype-phenotype prediction</h3>
+        <div class="meta">Intelligent Systems for Molecular Biology (ISMB) · 2022</div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section class="panel" id="contact">
     <h2 class="panel-title">Contact</h2>
-    <p class="panel-sub">Card 05 / Correspondence</p>
+    <p class="panel-sub">Owl Post · Correspondence</p>
     <div class="contact-card">
       <ul class="contact-list">
         <li><span class="label">Email</span><a href="mailto:pchandrashe3@wisc.edu">pchandrashe3@wisc.edu</a></li>
-        <li><span class="label">Office</span><span>Waisman Center</span></li>
-        <li><span class="label">Scholar</span><a href="#">Google Scholar profile</a></li>
-        <li><span class="label">GitHub</span><a href="#">github.com/jordanellis</a></li>
-        <li><span class="label">ORCID</span><span>0000-0000-0000-0000</span></li>
+        <li><span class="label">Affiliation</span><span>Dept. of Biostatistics &amp; Medical Informatics, UW–Madison</span></li>
+        <li><span class="label">Advisor</span><a href="https://www.waisman.wisc.edu/staff/wang-daifeng/" target="_blank" rel="noopener">Prof. Daifeng Wang</a></li>
+        <li><span class="label">Scholar</span><a href="https://scholar.google.com/citations?user=E7qOUMUAAAAJ" target="_blank" rel="noopener">Google Scholar profile</a></li>
       </ul>
     </div>
   </section>
@@ -429,7 +523,7 @@
 </main>
 
 <footer>
-  © 2026 Jordan Ellis. Built with plain HTML/CSS/JS, hosted on GitHub Pages.
+  © 2026 Pramod Bharadwaj Chandrashekar. Built with plain HTML/CSS/JS, hosted on GitHub Pages.
 </footer>
 
 <script>
