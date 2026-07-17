@@ -4,157 +4,456 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pramod Bharadwaj Chandrashekar</title>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    color: #333;
-    line-height: 1.6;
-}
+  :root{
+    --ink-bg: #142019;
+    --ink-bg-alt: #1b2a21;
+    --card: #f1e8d2;
+    --card-shadow: #0a120d;
+    --cream-text: #ece3cd;
+    --cream-text-dim: #b9ae95;
+    --brass: #b5904f;
+    --brass-bright: #d4ac66;
+    --stamp-red: #8a3a2c;
+    --rule: rgba(181,144,79,0.35);
+    --font-display: 'Source Serif 4', serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
 
-header {
-    background: #0f172a;
-    color: white;
-    text-align: center;
-    padding: 4rem 1rem;
-}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink-bg);
+    background-image:
+      radial-gradient(circle at 20% 10%, var(--ink-bg-alt) 0%, transparent 45%),
+      radial-gradient(circle at 90% 80%, var(--ink-bg-alt) 0%, transparent 40%);
+    color:var(--cream-text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
 
-header h1 {
-    margin: 0;
-    font-size: 3rem;
-}
+  a{color:var(--brass-bright);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--brass-bright); outline-offset:3px;}
 
-header p {
-    color: #cbd5e1;
-}
+  /* ===== Header / Title Card ===== */
+  header.title-block{
+    max-width:900px;
+    margin:0 auto;
+    padding:64px 24px 32px;
+    text-align:left;
+    border-bottom:1px solid var(--rule);
+  }
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin-bottom:14px;
+  }
+  h1.name{
+    font-family:var(--font-display);
+    font-size:clamp(2.2rem, 5vw, 3.4rem);
+    font-weight:700;
+    margin:0 0 6px;
+    color:var(--cream-text);
+    letter-spacing:-0.01em;
+  }
+  p.role-line{
+    font-size:1.05rem;
+    color:var(--cream-text-dim);
+    margin:0 0 4px;
+  }
+  p.role-line .sep{ color:var(--brass); margin:0 8px; }
 
-nav {
-    background: #1e293b;
-    text-align: center;
-    padding: 0.8rem;
-}
+  /* ===== Nav — library drawer tabs ===== */
+  nav.tabs{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 24px;
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    background:var(--ink-bg);
+    z-index:10;
+    padding-top:18px;
+    padding-bottom:0;
+  }
+  nav.tabs button{
+    font-family:var(--font-mono);
+    font-size:0.8rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    background:var(--ink-bg-alt);
+    color:var(--cream-text-dim);
+    border:1px solid var(--rule);
+    border-bottom:none;
+    padding:10px 18px 12px;
+    border-radius:6px 6px 0 0;
+    cursor:pointer;
+    position:relative;
+    top:1px;
+    transition:color .15s ease, background .15s ease;
+  }
+  nav.tabs button:hover{ color:var(--cream-text); }
+  nav.tabs button.active{
+    background:var(--card);
+    color:#1b140a;
+    font-weight:500;
+    border-color:var(--card);
+  }
+  nav.tabs-underline{
+    height:1px;
+    background:var(--card);
+    max-width:900px;
+    margin:0 auto;
+  }
 
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-}
+  /* ===== Main panel (card surface) ===== */
+  main{
+    max-width:900px;
+    margin:0 auto 80px;
+    background:var(--card);
+    color:#2a2114;
+    border-radius:0 8px 8px 8px;
+    padding:44px 40px 56px;
+    box-shadow: 0 24px 60px -20px var(--card-shadow);
+  }
+  section.panel{ display:none; animation:fade .35s ease; }
+  section.panel.active{ display:block; }
+  @keyframes fade{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
 
-section {
-    max-width: 1000px;
-    margin: auto;
-    padding: 3rem 1rem;
-}
+  h2.panel-title{
+    font-family:var(--font-display);
+    font-size:1.7rem;
+    margin:0 0 6px;
+    color:#241b0e;
+  }
+  p.panel-sub{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    color:#7a6a45;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    margin:0 0 28px;
+  }
 
-.card {
-    background: #f8fafc;
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-}
+  /* ===== Home ===== */
+  .bio{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:32px;
+    align-items:start;
+  }
+  .portrait{
+    width:150px; height:150px;
+    border-radius:4px;
+    background:linear-gradient(135deg,#c9b48a,#8a734b);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display);
+    font-size:2.4rem; color:#2a2114; font-weight:700;
+    border:1px solid #00000022;
+  }
+  .bio p{ margin:0 0 14px; font-size:1rem; max-width:56ch; }
+  .interests{
+    margin-top:18px;
+    display:flex; flex-wrap:wrap; gap:8px;
+  }
+  .interests span{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    border:1px solid #8a6a3a55;
+    padding:5px 10px;
+    border-radius:3px;
+    color:#5c4a26;
+    background:#e8dcb8;
+  }
+  @media (max-width:560px){
+    .bio{ grid-template-columns:1fr; }
+    .portrait{ width:96px; height:96px; font-size:1.6rem; }
+  }
 
-footer {
-    text-align: center;
-    padding: 2rem;
-    background: #0f172a;
-    color: white;
-}
+  /* ===== Catalog cards (Featured / Publications / Talks) ===== */
+  .catalog{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .entry{
+    position:relative;
+    border:1px solid #8a6a3a55;
+    border-left:3px solid var(--brass);
+    background:#e9ddb9;
+    padding:18px 20px 18px 22px;
+    border-radius:2px;
+  }
+  .entry .num{
+    position:absolute;
+    top:14px; right:16px;
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    color:var(--stamp-red);
+    border:1px solid var(--stamp-red);
+    padding:2px 7px;
+    border-radius:2px;
+    transform:rotate(2deg);
+    opacity:0.85;
+  }
+  .entry h3{
+    font-family:var(--font-display);
+    font-size:1.12rem;
+    margin:0 8px 6px 0;
+    padding-right:70px;
+    color:#241b0e;
+  }
+  .entry .meta{
+    font-family:var(--font-mono);
+    font-size:0.76rem;
+    color:#6b5a35;
+    margin-bottom:8px;
+    letter-spacing:0.02em;
+  }
+  .entry p{ margin:0; font-size:0.94rem; color:#3a2e18; }
+  .entry .tag{
+    display:inline-block;
+    margin-top:10px;
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:#7a6a45;
+  }
+
+  /* ===== Contact ===== */
+  .contact-card{
+    border:1px dashed #8a6a3a88;
+    padding:26px;
+    border-radius:4px;
+    background:#e9ddb9;
+    max-width:480px;
+    position:relative;
+  }
+  .contact-card::after{
+    content:"REACH ME";
+    position:absolute;
+    top:-11px; left:20px;
+    background:var(--card);
+    padding:0 8px;
+    font-family:var(--font-mono);
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    color:var(--stamp-red);
+  }
+  .contact-list{ list-style:none; margin:0; padding:0; }
+  .contact-list li{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid #8a6a3a33;
+    font-size:0.95rem;
+  }
+  .contact-list li:last-child{ border-bottom:none; }
+  .contact-list .label{
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:#7a6a45;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .contact-list a{ color:#5c3d24; font-weight:500; }
+
+  footer{
+    max-width:900px;
+    margin:0 auto 40px;
+    padding:0 24px;
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    color:var(--cream-text-dim);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    section.panel{ animation:none; }
+  }
 </style>
 </head>
-
 <body>
-<header>
-    <h1>Pramod Bharadwaj Chandrashekar</h1>
-    <p>Scientist | Researcher | Innovator</p>
+
+<header class="title-block">
+  <div class="eyebrow">Personal Site — Est. 2026</div>
+  <h1 class="name">Jordan Ellis, PhD</h1>
+  <p class="role-line">Computational Ecology <span class="sep">·</span> Postdoctoral Researcher <span class="sep">·</span> Cascade Institute</p>
 </header>
 
-<nav class="navbar">
-    <div class="nav-container">
-        <div class="nav-right">
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="#home" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-                <a href="#featured" class="nav-link">Featured</a>
-            </li>
-            <li class="nav-item">
-                <a href="#publications" class="nav-link">Publications</a>
-            </li>
-            <li class="nav-item">
-                <a href="#talks" class="nav-link">Talks</a>
-            </li>
-            <li class="nav-item">
-                <a href="#awards" class="nav-link">Awards</a>
-            </li>
-            <li class="nav-item">
-                <a href="#contact" class="nav-link">Contact</a>
-            </li>
-        </ul>
-            <button class="music-toggle" aria-label="Play music" aria-pressed="false"><i class="fas fa-music"></i></button>
-            <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
-        </div>
-        <div class="nav-toggle">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-    </div>
+<nav class="tabs" role="tablist" aria-label="Site sections">
+  <button class="tab-btn active" data-target="home" role="tab" aria-selected="true">Home</button>
+  <button class="tab-btn" data-target="featured" role="tab" aria-selected="false">Featured</button>
+  <button class="tab-btn" data-target="publications" role="tab" aria-selected="false">Publications</button>
+  <button class="tab-btn" data-target="talks" role="tab" aria-selected="false">Talks</button>
+  <button class="tab-btn" data-target="contact" role="tab" aria-selected="false">Contact</button>
 </nav>
+<div class="tabs-underline"></div>
 
-<section id="about">
-    <h2>About Me</h2>
-    <p>
-        I am a Scientist with expertise in research, data analysis,
-        scientific innovation, and problem solving. My interests include
-        applying advanced scientific methods and technology to solve
-        real-world challenges.
-    </p>
-</section>
+<main>
 
-<section id="projects">
-    <h2>Research & Projects</h2>
-
-    <div class="card">
-        <h3>Project 1</h3>
-        <p>Describe your project, impact, and technologies used.</p>
+  <!-- HOME -->
+  <section class="panel active" id="home">
+    <h2 class="panel-title">About</h2>
+    <p class="panel-sub">Card 01 / Introduction</p>
+    <div class="bio">
+      <div class="portrait">JE</div>
+      <div>
+        <p>I'm a researcher working at the intersection of ecological modeling and machine learning, currently based at the Cascade Institute. My work focuses on predicting how species distributions shift under environmental change, using tools from spatial statistics and deep learning.</p>
+        <p>Before this, I completed my PhD at the University of the Pacific Northwest, where I studied population dynamics in freshwater ecosystems. I'm generally interested in building models that are useful to conservation practitioners, not just accurate on a benchmark.</p>
+        <div class="interests">
+          <span>Species distribution modeling</span>
+          <span>Bayesian statistics</span>
+          <span>Remote sensing</span>
+          <span>Conservation policy</span>
+          <span>Open science</span>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-        <h3>Project 2</h3>
-        <p>Describe another project or research initiative.</p>
+  <!-- FEATURED -->
+  <section class="panel" id="featured">
+    <h2 class="panel-title">Featured Work</h2>
+    <p class="panel-sub">Card 02 / Selected Highlights</p>
+    <div class="catalog">
+      <div class="entry">
+        <span class="num">FT-01</span>
+        <h3>A deep learning framework for range-shift forecasting</h3>
+        <div class="meta">2026 · Nature Ecology &amp; Evolution (in press)</div>
+        <p>Introduces a spatiotemporal model that outperforms classical SDMs on 40 North American bird species, with an open-source implementation used by three conservation NGOs.</p>
+        <span class="tag">Journal Article</span>
+      </div>
+      <div class="entry">
+        <span class="num">FT-02</span>
+        <h3>Open Range — a public dataset for distribution modeling</h3>
+        <div class="meta">2025 · Dataset &amp; Toolkit</div>
+        <p>Co-led the release of a curated, versioned dataset combining citizen-science observations with satellite covariates, now used in over a dozen published studies.</p>
+        <span class="tag">Dataset</span>
+      </div>
+      <div class="entry">
+        <span class="num">FT-03</span>
+        <h3>Press coverage: "The models tracking a warming wild"</h3>
+        <div class="meta">2025 · Science Weekly Feature</div>
+        <p>Profile piece on the lab's forecasting work and its adoption by regional wildlife agencies.</p>
+        <span class="tag">Media</span>
+      </div>
     </div>
-</section>
+  </section>
 
-<section id="publications">
-    <h2>Publications</h2>
-    <ul>
-        <li>Publication Title 1</li>
-        <li>Publication Title 2</li>
-        <li>Publication Title 3</li>
-    </ul>
-</section>
+  <!-- PUBLICATIONS -->
+  <section class="panel" id="publications">
+    <h2 class="panel-title">Publications</h2>
+    <p class="panel-sub">Card 03 / Chronological Index</p>
+    <div class="catalog">
+      <div class="entry">
+        <span class="num">PB-07</span>
+        <h3>A deep learning framework for range-shift forecasting</h3>
+        <div class="meta">Ellis, J., Marsh, T., Okafor, N. · Nature Ecology &amp; Evolution, 2026</div>
+        <p>Presents a convolutional-recurrent architecture for forecasting species range shifts under climate scenarios.</p>
+      </div>
+      <div class="entry">
+        <span class="num">PB-06</span>
+        <h3>Uncertainty quantification in citizen-science occurrence data</h3>
+        <div class="meta">Ellis, J., Rowe, K. · Methods in Ecology and Evolution, 2025</div>
+        <p>Proposes a hierarchical Bayesian approach for correcting observer bias in crowdsourced biodiversity records.</p>
+      </div>
+      <div class="entry">
+        <span class="num">PB-05</span>
+        <h3>Freshwater population cycles under variable flow regimes</h3>
+        <div class="meta">Ellis, J. · Journal of Applied Ecology, 2024</div>
+        <p>PhD dissertation chapter examining how altered hydrology reshapes population dynamics in stream-dwelling fish.</p>
+      </div>
+      <div class="entry">
+        <span class="num">PB-04</span>
+        <h3>Comparing SDM architectures across taxonomic groups</h3>
+        <div class="meta">Ellis, J., Marsh, T. · Ecography, 2023</div>
+        <p>Benchmark study comparing five modeling approaches across 200 species from four taxonomic classes.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="skills">
-    <h2>Skills</h2>
-    <p>
-        Scientific Research • Data Analysis • Python • Machine Learning •
-        Statistical Modeling • Experimental Design • Technical Writing
-    </p>
-</section>
+  <!-- TALKS -->
+  <section class="panel" id="talks">
+    <h2 class="panel-title">Talks &amp; Presentations</h2>
+    <p class="panel-sub">Card 04 / Speaking Record</p>
+    <div class="catalog">
+      <div class="entry">
+        <span class="num">TK-11</span>
+        <h3>Forecasting biodiversity loss with deep spatiotemporal models</h3>
+        <div class="meta">Keynote · International Congress for Conservation Biology, Vancouver · 2026</div>
+        <p>Invited keynote on bridging machine learning and applied conservation decision-making.</p>
+      </div>
+      <div class="entry">
+        <span class="num">TK-09</span>
+        <h3>Open Range: building public infrastructure for ecology</h3>
+        <div class="meta">Invited Talk · Cascade Institute Seminar Series · 2025</div>
+        <p>Overview of the dataset's design and its adoption across the research community.</p>
+      </div>
+      <div class="entry">
+        <span class="num">TK-06</span>
+        <h3>Uncertainty in the wild: modeling noisy ecological data</h3>
+        <div class="meta">Contributed Talk · Ecological Society of America Annual Meeting · 2024</div>
+        <p>Presented dissertation work on Bayesian bias-correction methods for occurrence data.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="contact">
-    <h2>Contact</h2>
+  <!-- CONTACT -->
+  <section class="panel" id="contact">
+    <h2 class="panel-title">Contact</h2>
+    <p class="panel-sub">Card 05 / Correspondence</p>
+    <div class="contact-card">
+      <ul class="contact-list">
+        <li><span class="label">Email</span><a href="mailto:pchandrashe3@wisc.edu">pchandrashe3@wisc.edu</a></li>
+        <li><span class="label">Office</span><span>Waisman Center</span></li>
+        <li><span class="label">Scholar</span><a href="#">Google Scholar profile</a></li>
+        <li><span class="label">GitHub</span><a href="#">github.com/jordanellis</a></li>
+        <li><span class="label">ORCID</span><span>0000-0000-0000-0000</span></li>
+      </ul>
+    </div>
+  </section>
 
-    <p>Email: your.email@example.com</p>
-    <p>GitHub: #GitHub Profile</a></p>
-    <p>LinkedIn: #LinkedIn Profile</a></p>
-</section>
+</main>
 
 <footer>
-    <p>© 2026 Pramod Bharadwaj Chandrashekar</p>
+  © 2026 Jordan Ellis. Built with plain HTML/CSS/JS, hosted on GitHub Pages.
 </footer>
+
+<script>
+  const buttons = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.panel');
+
+  function activate(id, updateHash){
+    buttons.forEach(b => {
+      const isMatch = b.dataset.target === id;
+      b.classList.toggle('active', isMatch);
+      b.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+    });
+    panels.forEach(p => p.classList.toggle('active', p.id === id));
+    if(updateHash) history.replaceState(null, '', '#' + id);
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => activate(btn.dataset.target, true));
+  });
+
+  const initial = window.location.hash.replace('#','');
+  const valid = Array.from(panels).some(p => p.id === initial);
+  activate(valid ? initial : 'home', false);
+</script>
 
 </body>
 </html>
